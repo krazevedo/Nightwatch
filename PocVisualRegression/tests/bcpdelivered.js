@@ -1,3 +1,4 @@
+require('dotenv').load()
 module.exports = {
     '@tags': ['bcpdelivered'],
     'BCP Delivered' : function (client) {
@@ -6,8 +7,8 @@ module.exports = {
         .waitForElementVisible('body', 10000)
         .assert.elementPresent('h2','Welcome')
         .assert.visible('input[type=text]')
-        .setValue('input[type=text]', 'process.env.GOAL_USER')
-        .setValue('input[type=password]', 'process.env.GOAL_PASS')    
+        .setValue('input[type=text]', process.env.GOAL_USER)
+        .setValue('input[type=password]', process.env.GOAL_PASS)    
         .submitForm('form')        
         .pause(5000)
         .assert.containsText('h3','Business Complexity Points Delivered')
@@ -28,8 +29,8 @@ module.exports = {
         .waitForElementVisible('body', 10000)
         .assert.elementPresent('h2','Welcome')
         .assert.visible('input[type=text]')
-        .setValue('input[type=text]', 'process.env.GOAL_USER')
-        .setValue('input[type=password]', 'process.env.GOAL_PASS')      
+        .setValue('input[type=text]', process.env.GOAL_USER)
+        .setValue('input[type=password]', process.env.GOAL_PASS)      
         .submitForm('form')        
         .pause(5000)
         .assert.containsText('h3','Business Complexity Points Delivered')
