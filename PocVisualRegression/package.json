@@ -9,6 +9,7 @@
   "author": "Kaio",
   "license": "ISC",
   "dependencies": {
+    "dotenv": "^5.0.1",
     "fs-extra": "^0.26.2",
     "gm": "^1.21.1",
     "nightwatch": "^0.9.20",
