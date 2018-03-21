@@ -1,3 +1,14 @@
+var HtmlReporter = require('nightwatch-html-reporter');
+var reporter = new HtmlReporter({
+	openBrowser: true,
+	reportsDirectory: __dirname + '/reports'
+});
+module.exports = {
+	reporter: reporter.fn
+};
+module.exports = {
+    reporter: (require('nightwatch-slack-reporter'))
+};
 module.exports = {
     visualRegression: {
         // Just a placeholder - doesn't actually work yet
