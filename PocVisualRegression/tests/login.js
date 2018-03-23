@@ -2,14 +2,14 @@ require('dotenv').load()
 module.exports = {
     '@tags': ['login'],
     'Login Goal' : function (client) {
-      client
-        .url('https://goal.ciandt.com')
-        .waitForElementVisible('body', 1000)
-        .assert.elementPresent('h2','Welcome')
-        .assert.visible('input[type=text]')
-        .setValue('input[type=text]', process.env.GOAL_USER)
-        .setValue('input[type=password]', process.env.GOAL_PASS)
-        .assert.visualRegression() 
-        .end()       
+      var login = client.page.loginPage();
+        login.navigate()
+          .waitForElementVisible('body', 1000)
+          .assert.elementPresent('h2','Welcome')
+          .assert.visible('@username')
+          .setValue('@username', process.env.GOAL_USER)
+          .setValue('@password', process.env.GOAL_PASS)
+          .assert.visualRegression() 
+        client.end()       
     }
   };
