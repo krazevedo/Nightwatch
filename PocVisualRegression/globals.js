@@ -5,7 +5,7 @@ var reporter = new HtmlReporter({
 });
 module.exports = {
 	reporter: reporter.fn
-};
+};  
 module.exports = {
     reporter: (require('nightwatch-slack-reporter'))
 };
@@ -33,6 +33,6 @@ module.exports = {
 
         // Fail the regression assertion if the images are more than
         // this percent different
-        mismatchTolerance: 0.15
+        mismatchTolerance: 0.07
     }
 };

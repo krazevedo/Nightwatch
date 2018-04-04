@@ -20,7 +20,7 @@
   
     "test_settings" : {
       "default" : {
-        "launch_url" : "http://localhost:5558",
+        "launch_url" : "https://goal.ciandt.com",
         "selenium_port"  : 4444,
         "selenium_host"  : "localhost",
         "silent": true,
@@ -40,7 +40,7 @@
         "desiredCapabilities": {
           "browserName": "chrome",
           "chromeOptions" : {
-            "args" : ["start-maximized", "window-size=1170,768", "headless"]
+            "args" : ["start-maximized", "window-size=1170,768"]
           }          
         }
       },
