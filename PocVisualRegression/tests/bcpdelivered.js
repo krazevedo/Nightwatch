@@ -14,8 +14,8 @@ module.exports = {
     home.waitForElementVisible('body', 1000)
     menuTop.click('@companyBtn')
     home
-      .waitForElementPresent('@companyList', 1000)
-      .click('@companyList')
+      .waitForElementPresent('@list', 1000)
+      .selectListBox(client, home, 'Goal')
     menuTop
       .waitForElementPresent('@apply', 1000)
       .click('@apply')
@@ -50,8 +50,8 @@ module.exports = {
     home.waitForElementVisible('body', 1000)
     menuTop.click('@companyBtn')
     home
-      .waitForElementPresent('@companyList', 1000)
-      .click('@companyList')
+      .waitForElementPresent('@list', 1000)
+      .selectListBox(client, home, 'Goal')
     menuTop
       .waitForElementPresent('@apply', 1000)
       .click('@apply')
@@ -93,8 +93,8 @@ module.exports = {
     home.waitForElementVisible('body', 1000)
     menuTop.click('@companyBtn')
     home
-      .waitForElementPresent('@companyList', 1000)
-      .click('@companyList')
+      .waitForElementPresent('@list', 1000)
+      .selectListBox(client, home, 'Goal')
     menuTop
       .waitForElementPresent('@apply', 1000)
       .click('@apply')
@@ -139,8 +139,8 @@ module.exports = {
     home.waitForElementVisible('body', 1000)
     menuTop.click('@companyBtn')
     home
-      .waitForElementPresent('@companyList', 1000)
-      .click('@companyList')
+      .waitForElementPresent('@list', 1000)
+      .selectListBox(client, home, 'Goal')
     menuTop
       .waitForElementPresent('@apply', 1000)
       .click('@apply')
@@ -177,8 +177,8 @@ module.exports = {
     home.waitForElementVisible('body', 1000)
     menuTop.click('@companyBtn')
     home
-      .waitForElementPresent('@companyList', 1000)
-      .click('@companyList')
+      .waitForElementPresent('@list', 1000)
+      .selectListBox(client, home, 'Goal')
     menuTop
       .waitForElementPresent('@apply', 1000)
       .click('@apply')
@@ -216,14 +216,45 @@ module.exports = {
     home.waitForElementVisible('body', 1000)
     menuTop.click('@companyBtn')
     home
-      .waitForElementPresent('@companyList', 1000)
-      .click('@companyList')
+      .waitForElementPresent('@list', 1000)
+      .selectListBox(client, home, 'Goal')
     menuTop
       .waitForElementPresent('@apply', 1000)
       .click('@apply')
     menuReportsBCP
       .waitForElementVisible('@release', 10000)
       .click('@release')
+    client
+      .pause(2000)
+      .assert.visualRegression()
+      .pause(2000)
+      .end()
+  },
+
+  'BCP Delivered Release Selected': function (client) {
+    var login = client.page.loginPage();
+    var home = client.page.homePage();
+    var menuTop = home.section.menuTop;
+    var menuReportsBCP = home.section.menuReportsBCP;
+    var inconsistence = home.section.inconsistence;
+    var bcpdelivered = client.page.reportPage();
+    var header = bcpdelivered.section.header;
+    var graphic = bcpdelivered.section.graphic;
+    login.navigate()
+      .realizarLogin(process.env.GOAL_USER, process.env.GOAL_PASS)
+    client.pause(5000)
+    home.waitForElementVisible('body', 1000)
+    menuTop.click('@companyBtn')
+    home
+      .waitForElementPresent('@list', 1000)
+      .selectListBox(client, home, 'Goal')
+    menuTop
+      .waitForElementPresent('@apply', 1000)
+      .click('@apply')
+    menuReportsBCP
+      .waitForElementVisible('@release', 10000)
+      .click('@release')
+    home.selectListBox(client, home, '2018 - Q1')
     client
       .pause(2000)
       .assert.visualRegression()

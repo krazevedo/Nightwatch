@@ -1,27 +1,59 @@
-const datePickerCommands = {  
-    clearDatePicker(page, selector, date) {
-	  return this
-	  .getValue(selector, function(result){
-		for (c in result.value){
-		  page.setValue(selector, "\u0008")
-		} 
-	  }) 
-	  .setValue(selector, date)
-    }
-  };
+const datePickerCommands = {
+	clearDatePicker(page, selector, date) {
+		return this
+			.getValue(selector, function (result) {
+				for (c in result.value) {
+					page.setValue(selector, "\u0008")
+				}
+			})
+			.setValue(selector, date)
+	}
+};
+
+const selectCommands = {
+	selectListBox(client, page, text) {
+		let element = null;
+		client.pause(500)
+		client.elements('css selector', '#app > div.menu__content.menuable__content__active > div > ul > li', function (elements) {
+			let success = false;
+			for (let i = 0;
+				(i < elements.value.length) && (success === false); i++) {
+				client.elementIdText(elements.value[i].ELEMENT, function (result) {
+					if (result.value === text) {						
+						success = true;
+						element = elements.value[i].ELEMENT;
+						page.api.elementIdClick(element);
+					}
+				});
+			}
+		});
+	},
+	selectListCheck(client, page, text) {
+		let element = null;
+		client.pause(500)
+		client.elements('css selector', '#app > div.menu__content.menuable__content__active > div > ul > li', function (elements) {
+			let success = false;
+			for (let i = 0;
+				(i < elements.value.length) && (success === false); i++) {
+				client.elementIdText(elements.value[i].ELEMENT, function (result) {
+					var value = result.value.split('\n')
+					if (value[0] === text) {
+						success = true;
+						element = elements.value[i].ELEMENT;
+						page.api.elementIdClick(element)
+					}
+				});
+			}
+		});
+	}
+};
 
 module.exports = {
-	commands: [datePickerCommands],
-    elements: {
-		companyList: {
-			selector: '#app > div.menu__content.menuable__content__active > div > ul > li:nth-child(19) > a > span'
-		},		
-		projectList: {
-			selector: '#app > div.menu__content.menuable__content__active > div > ul > li:nth-child(1) > i'
+	commands: [datePickerCommands, selectCommands],
+	elements: {
+		list: {
+			selector: '#app > div.menu__content.menuable__content__active > div > ul > li'
 		},
-		teamList: {
-			selector: '#app > div.menu__content.menuable__content__active > div > ul > li:nth-child(1) > div > div.input-group__input > div'
-		},		
 		optionsList: {
 			selector: '#app > div.menu__content.menuable__content__active > div > div > div > div'
 		},
@@ -33,56 +65,65 @@ module.exports = {
 		},
 		checkOptions: {
 			selector: '#app > div.menu__content.menuable__content__active > div > div > div > div > div.input-group__input > div'
+		},
+		settings: {
+			selector: '#app > div.menu__content.menuable__content__active > ul > div > li > a'
+		},
+		logout: {
+			selector: '#app > div.menu__content.menuable__content__active > ul > li > a'
 		}
 	},
 	sections: {
 		menuTop: {
-		  selector: 'header.header-top',
-		  elements: {
-			companyBtn: {
-				selector: 'div.main-filter.open > div > nav > ul > li:nth-child(1) > div > div'
-			},
-			projectBtn: {
-				selector: 'div.main-filter.open > div > nav > ul > li:nth-child(2) > div > div'
-			},
-			teamBtn: {
-				selector: 'div.main-filter.open > div > nav > ul > li:nth-child(3) > div > div'
-			},
-			apply: {
-				selector: '#btnApplyMainSelection'
-			},
-			reports:{
-				selector: 'nav > ul > li:nth-child(2) > a'
-			},
-			roadmap:{
-				selector: 'nav > ul > li:nth-child(3) > a'
+			selector: 'header.header-top',
+			elements: {
+				companyBtn: {
+					selector: 'div.main-filter.open > div > nav > ul > li:nth-child(1) > div > div'
+				},
+				projectBtn: {
+					selector: 'div.main-filter.open > div > nav > ul > li:nth-child(2) > div > div'
+				},
+				teamBtn: {
+					selector: 'div.main-filter.open > div > nav > ul > li:nth-child(3) > div > div'
+				},
+				apply: {
+					selector: '#btnApplyMainSelection'
+				},
+				reports: {
+					selector: 'nav > ul > li:nth-child(2) > a'
+				},
+				roadmap: {
+					selector: 'nav > ul > li:nth-child(3) > a'
+				},
+				user: {
+					selector: 'div.user-info-wrap > div > div:nth-child(2) > div > div > button > span'
+				}
 			}
-		  }
 		},
-		menuReportsBCP:{
+		menuReportsBCP: {
 			selector: 'header.page-header',
 			elements: {
-			release: {
-				selector: 'div > div:nth-child(1) > div > div > div > div > div'
-			},
-			optionsBtn: {
-				selector: 'div > div.item-box-separator > div > div > a'
-			},
-			month: {
-				selector: 'div.input-group__input div:nth-child(1) div div.input-group--selection-controls__ripple'
-			},
-			cycle: {
-				selector: 'div.input-group__input div:nth-child(2) div div.input-group--selection-controls__ripple'
-			},
-			datePicker: {
-				selector: 'div > div:nth-child(4) > div > div > div > div > div'
-			},			
-			apply: {
-				selector: '#applyButton'
-			}
+				release: {
+					selector: 'div > div:nth-child(1) > div > div > div > div > div'
+				},
+				optionsBtn: {
+					selector: 'div > div.item-box-separator > div > div > a'
+				},
+				month: {
+					selector: 'div.input-group__input div:nth-child(1) div div.input-group--selection-controls__ripple'
+				},
+				cycle: {
+					selector: 'div.input-group__input div:nth-child(2) div div.input-group--selection-controls__ripple'
+				},
+				datePicker: {
+					selector: 'div > div:nth-child(4) > div > div > div > div > div'
+				},
+				apply: {
+					selector: '#applyButton'
+				}
 			}
 		},
-		menuReports:{
+		menuReports: {
 			selector: 'header.page-header',
 			elements: {
 				optionsBtn: {
@@ -99,13 +140,13 @@ module.exports = {
 				},
 				datePicker: {
 					selector: 'div > div:nth-child(4) > div > div > div > div > div'
-				},			
+				},
 				apply: {
 					selector: '#applyButton'
 				}
-				}
-			},
-		inconsistence:{
+			}
+		},
+		inconsistence: {
 			selector: 'div.inconsistency-wrap.display-inconsistency-box',
 			elements: {
 				viewBtn: {
@@ -113,10 +154,10 @@ module.exports = {
 				},
 				hideBtn: {
 					selector: 'div > div.inconsistency-box__title > p > a:nth-child(3)'
-				}			
+				}
 			}
 		},
-		menuLeft:{
+		menuLeft: {
 			selector: 'div#left-menu',
 			elements: {
 				bcpDelivered: {
@@ -124,7 +165,7 @@ module.exports = {
 				},
 				quality: {
 					selector: 'nav > ul > li:nth-child(2) > span > span > span > a'
-				},			
+				},
 				productivity: {
 					selector: 'nav > ul > li:nth-child(3) > span > span > span > a'
 				},
@@ -132,7 +173,6 @@ module.exports = {
 					selector: 'nav > ul > li:nth-child(4) > span > span > span > a'
 				}
 			}
-	  	}
-	  }
-  };
-
+		}
+	}
+};

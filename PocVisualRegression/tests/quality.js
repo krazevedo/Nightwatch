@@ -18,8 +18,8 @@ module.exports = {
     home.waitForElementVisible('body', 1000)
     menuTop.click('@companyBtn')
     home
-      .waitForElementPresent('@companyList', 1000)
-      .click('@companyList')
+      .waitForElementPresent('@list', 1000)
+      .selectListBox(client, home, 'Goal')
     menuTop
       .waitForElementPresent('@apply', 1000)
       .click('@apply')
@@ -62,8 +62,8 @@ module.exports = {
     home.waitForElementVisible('body', 1000)
     menuTop.click('@companyBtn')
     home
-      .waitForElementPresent('@companyList', 1000)
-      .click('@companyList')
+      .waitForElementPresent('@list', 1000)
+      .selectListBox(client, home, 'Goal')
     menuTop
       .waitForElementPresent('@apply', 1000)
       .click('@apply')
@@ -109,8 +109,8 @@ module.exports = {
     home.waitForElementVisible('body', 1000)
     menuTop.click('@companyBtn')
     home
-      .waitForElementPresent('@companyList', 1000)
-      .click('@companyList')
+      .waitForElementPresent('@list', 1000)
+      .selectListBox(client, home, 'Goal')
     menuTop
       .waitForElementPresent('@apply', 1000)
       .click('@apply')
@@ -156,8 +156,8 @@ module.exports = {
     home.waitForElementVisible('body', 1000)
     menuTop.click('@companyBtn')
     home
-      .waitForElementPresent('@companyList', 1000)
-      .click('@companyList')
+      .waitForElementPresent('@list', 1000)
+      .selectListBox(client, home, 'Goal')
     menuTop
       .waitForElementPresent('@apply', 1000)
       .click('@apply')
@@ -203,8 +203,8 @@ module.exports = {
     home.waitForElementVisible('body', 1000)
     menuTop.click('@companyBtn')
     home
-      .waitForElementPresent('@companyList', 1000)
-      .click('@companyList')
+      .waitForElementPresent('@list', 1000)
+      .selectListBox(client, home, 'Goal')
     menuTop
       .waitForElementPresent('@apply', 1000)
       .click('@apply')
@@ -251,8 +251,8 @@ module.exports = {
     home.waitForElementVisible('body', 1000)
     menuTop.click('@companyBtn')
     home
-      .waitForElementPresent('@companyList', 1000)
-      .click('@companyList')
+      .waitForElementPresent('@list', 1000)
+      .selectListBox(client, home, 'Goal')
     menuTop
       .waitForElementPresent('@apply', 1000)
       .click('@apply')
@@ -299,8 +299,8 @@ module.exports = {
     home.waitForElementVisible('body', 1000)
     menuTop.click('@companyBtn')
     home
-      .waitForElementPresent('@companyList', 1000)
-      .click('@companyList')
+      .waitForElementPresent('@list', 1000)
+      .selectListBox(client, home, 'Goal')
     menuTop
       .waitForElementPresent('@apply', 1000)
       .click('@apply')
@@ -346,8 +346,8 @@ module.exports = {
     home.waitForElementVisible('body', 1000)
     menuTop.click('@companyBtn')
     home
-      .waitForElementPresent('@companyList', 1000)
-      .click('@companyList')
+      .waitForElementPresent('@list', 1000)
+      .selectListBox(client, home, 'Goal')
     menuTop
       .waitForElementPresent('@apply', 1000)
       .click('@apply')
@@ -394,8 +394,8 @@ module.exports = {
     home.waitForElementVisible('body', 1000)
     menuTop.click('@companyBtn')
     home
-      .waitForElementPresent('@companyList', 1000)
-      .click('@companyList')
+      .waitForElementPresent('@list', 1000)
+      .selectListBox(client, home, 'Goal')
     menuTop
       .waitForElementPresent('@apply', 1000)
       .click('@apply')
@@ -442,8 +442,8 @@ module.exports = {
     home.waitForElementVisible('body', 1000)
     menuTop.click('@companyBtn')
     home
-      .waitForElementPresent('@companyList', 1000)
-      .click('@companyList')
+      .waitForElementPresent('@list', 1000)
+      .selectListBox(client, home, 'Goal')
     menuTop
       .waitForElementPresent('@apply', 1000)
       .click('@apply')
@@ -489,8 +489,8 @@ module.exports = {
     home.waitForElementVisible('body', 1000)
     menuTop.click('@companyBtn')
     home
-      .waitForElementPresent('@companyList', 1000)
-      .click('@companyList')
+      .waitForElementPresent('@list', 1000)
+      .selectListBox(client, home, 'Goal')
     menuTop
       .waitForElementPresent('@apply', 1000)
       .click('@apply')
@@ -537,8 +537,8 @@ module.exports = {
     home.waitForElementVisible('body', 1000)
     menuTop.click('@companyBtn')
     home
-      .waitForElementPresent('@companyList', 1000)
-      .click('@companyList')
+      .waitForElementPresent('@list', 1000)
+      .selectListBox(client, home, 'Goal')
     menuTop
       .waitForElementPresent('@apply', 1000)
       .click('@apply')
