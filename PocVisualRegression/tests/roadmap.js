@@ -102,7 +102,7 @@ module.exports = {
         client.pause(500)
         roadmap.clearDatePicker(roadmap, '@startDate', '06/01/2018')             
         menuRoadmap.click('@apply')
-        futureCycle.waitForElementPresent('@editBtn', 5000)
+        futureCycle.waitForElementPresent('@editBtn', 10000)
         futureCycle.click('@editBtn')
         client
             .assert.visualRegression()

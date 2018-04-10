@@ -1,13 +1,16 @@
 require('dotenv').load()
 module.exports = {
-  '@tags': ['bcpdelivered'],
-  'BCP Delivered Month': function (client) {
+  '@tags': ['rework'],
+  'Rework Month': function (client) {
     //Instaciar paginas
     var login = client.page.loginPage();
     var home = client.page.homePage();
+    var rework = client.page.reportPage();
     //Instanciar sessão das páginas
     var menuTop = home.section.menuTop;
-    var menuReportsBCP = home.section.menuReportsBCP;
+    var menuReports = home.section.menuReports;
+    var menuLeft = home.section.menuLeft;
+    var header = rework.section.header;    
     login.navigate()
       .realizarLogin(process.env.GOAL_USER, process.env.GOAL_PASS) //Comando para realizar o login        
     client.pause(5000)
@@ -19,13 +22,15 @@ module.exports = {
     menuTop
       .waitForElementPresent('@apply', 1000)
       .click('@apply')
-    menuReportsBCP
-      .waitForElementVisible('@release', 10000)
+    client.pause(1000)
+    menuLeft.click('@rework')
+    client.pause(1000)
+    menuReports      
       .click('@datePicker')
     home
       .clearDatePicker(home, '@startDate', '11/01/2017')
       .clearDatePicker(home, '@endDate', '02/01/2018')
-    menuReportsBCP.click('@apply')
+    menuReports.click('@apply')
     //verifica se o frame existe, se sim clica no Gotcha
     client.element('css selector', 'client.frame(1)', function (visible) {
         if (visible.status == 0) {
@@ -36,14 +41,17 @@ module.exports = {
       .end()
   },
 
-  'BCP Delivered Cycle': function (client) {
+  'Rework Cycle': function (client) {
+    //Instaciar paginas
     var login = client.page.loginPage();
     var home = client.page.homePage();
+    var rework = client.page.reportPage();
+    //Instanciar sessão das páginas
     var menuTop = home.section.menuTop;
-    var menuReportsBCP = home.section.menuReportsBCP;
-    var bcpdelivered = client.page.reportPage();
-    var header = bcpdelivered.section.header;
-    var graphic = bcpdelivered.section.graphic;
+    var menuReports = home.section.menuReports;
+    var menuLeft = home.section.menuLeft;
+    var header = rework.section.header;
+    var graphic = rework.section.graphic;      
     login.navigate()
       .realizarLogin(process.env.GOAL_USER, process.env.GOAL_PASS)
     client.pause(5000)
@@ -55,17 +63,19 @@ module.exports = {
     menuTop
       .waitForElementPresent('@apply', 1000)
       .click('@apply')
-    menuReportsBCP
-      .waitForElementVisible('@release', 10000)
+    client.pause(1000)
+    menuLeft.click('@rework')
+    client.pause(1000)
+    menuReports
       .click('@cycle')
       .click('@datePicker')
     client.pause(1000)
     home
       .clearDatePicker(home, '@startDate', '11/01/2017')
       .clearDatePicker(home, '@endDate', '02/01/2018')
-    menuReportsBCP.click('@apply')
+    menuReports.click('@apply')
     client.pause(2000)
-    header.assert.containsText('@reportTitle', 'Business Complexity Points Delivered')
+    header.assert.containsText('@reportTitle', 'Rework')
     client.element('css selector', 'client.frame(1)', function (visible) {
       if (visible.status == 0) {
         client.frame(1).click('body > div > div > div > div.panel-content.panel-content-actions > div.appcues-actions-right > a')
@@ -78,15 +88,17 @@ module.exports = {
       .end()
   },
 
-  'BCP Delivered Inconsistence': function (client) {
+  'Rework Inconsistence': function (client) {
+    //Instaciar paginas
     var login = client.page.loginPage();
     var home = client.page.homePage();
+    var rework = client.page.reportPage();
+    //Instanciar sessão das páginas
     var menuTop = home.section.menuTop;
-    var menuReportsBCP = home.section.menuReportsBCP;
+    var menuReports = home.section.menuReports;
+    var menuLeft = home.section.menuLeft;
+    var header = rework.section.header;    
     var inconsistence = home.section.inconsistence;
-    var bcpdelivered = client.page.reportPage();
-    var header = bcpdelivered.section.header;
-    var graphic = bcpdelivered.section.graphic;
     login.navigate()
       .realizarLogin(process.env.GOAL_USER, process.env.GOAL_PASS)
     client.pause(5000)
@@ -98,18 +110,20 @@ module.exports = {
     menuTop
       .waitForElementPresent('@apply', 1000)
       .click('@apply')
-    menuReportsBCP
-      .waitForElementVisible('@release', 10000)
+    client.pause(1000)
+    menuLeft.click('@rework')
+    client.pause(1000)
+    menuReports
       .click('@cycle')
       .click('@datePicker')
     client.pause(2000)
     home
       .clearDatePicker(home, '@startDate', '08/01/2017')
       .clearDatePicker(home, '@endDate', '02/01/2018')
-    menuReportsBCP
+    menuReports
       .click('@apply')
     client.pause(2000)
-    header.assert.containsText('@reportTitle', 'Business Complexity Points Delivered')
+    header.assert.containsText('@reportTitle', 'Rework')
     client.element('css selector', 'client.frame(1)', function (visible) {
       if (visible.status == 0) {
         client.frame(1).click('body > div > div > div > div.panel-content.panel-content-actions > div.appcues-actions-right > a')
@@ -124,15 +138,16 @@ module.exports = {
       .end()
   },
 
-  'BCP Delivered Options Checked': function (client) {
-    var login = client.page.loginPage();
-    var home = client.page.homePage();
-    var menuTop = home.section.menuTop;
-    var menuReportsBCP = home.section.menuReportsBCP;
-    var inconsistence = home.section.inconsistence;
-    var bcpdelivered = client.page.reportPage();
-    var header = bcpdelivered.section.header;
-    var graphic = bcpdelivered.section.graphic;
+  'Rework Options Checked': function (client) {
+   //Instaciar paginas
+   var login = client.page.loginPage();
+   var home = client.page.homePage();
+   var rework = client.page.reportPage();
+   //Instanciar sessão das páginas
+   var menuTop = home.section.menuTop;
+   var menuReports = home.section.menuReports;
+   var menuLeft = home.section.menuLeft;
+   var header = rework.section.header;   
     login.navigate()
       .realizarLogin(process.env.GOAL_USER, process.env.GOAL_PASS)
     client.pause(5000)
@@ -144,16 +159,17 @@ module.exports = {
     menuTop
       .waitForElementPresent('@apply', 1000)
       .click('@apply')
-    menuReportsBCP  
+    menuReports  
       .click('@datePicker')
     client.pause(1000)
     home
       .clearDatePicker(home, '@startDate', '11/01/2017')
       .clearDatePicker(home, '@endDate', '02/01/2018')
-    menuReportsBCP.click('@apply')
-    client.pause(2000)
-    menuReportsBCP
-      .waitForElementVisible('@release', 10000)
+    menuReports.click('@apply')
+    client.pause(1000)
+    menuLeft.click('@rework')
+    client.pause(1000)    
+    menuReports
       .click('@optionsBtn')
     client
       .pause(2000)
@@ -162,15 +178,16 @@ module.exports = {
       .end()
   },
 
-  'BCP Delivered Options Unchecked': function (client) {
+  'Rework Options Unchecked': function (client) {
+    //Instaciar paginas
     var login = client.page.loginPage();
     var home = client.page.homePage();
+    var rework = client.page.reportPage();
+    //Instanciar sessão das páginas
     var menuTop = home.section.menuTop;
-    var menuReportsBCP = home.section.menuReportsBCP;
-    var inconsistence = home.section.inconsistence;
-    var bcpdelivered = client.page.reportPage();
-    var header = bcpdelivered.section.header;
-    var graphic = bcpdelivered.section.graphic;
+    var menuReports = home.section.menuReports;
+    var menuLeft = home.section.menuLeft;
+    var header = rework.section.header;
     login.navigate()
       .realizarLogin(process.env.GOAL_USER, process.env.GOAL_PASS)
     client.pause(5000)
@@ -182,16 +199,17 @@ module.exports = {
     menuTop
       .waitForElementPresent('@apply', 1000)
       .click('@apply')
-    menuReportsBCP  
+    menuReports 
       .click('@datePicker')
     client.pause(1000)
     home
       .clearDatePicker(home, '@startDate', '11/01/2017')
       .clearDatePicker(home, '@endDate', '02/01/2018')
-    menuReportsBCP.click('@apply')
-    client.pause(2000)
-    menuReportsBCP
-      .waitForElementVisible('@release', 10000)
+    menuReports.click('@apply')
+    client.pause(1000)
+    menuLeft.click('@rework')
+    client.pause(1000)
+    menuReports      
       .click('@optionsBtn')
     home.click('@checkOptions')
     client
@@ -201,15 +219,16 @@ module.exports = {
       .end()
   },
 
-  'BCP Delivered Release': function (client) {
+  'Rework Backlog Item': function (client) {
     var login = client.page.loginPage();
     var home = client.page.homePage();
+    var rework = client.page.reportPage();
+    //Instanciar sessão das páginas
     var menuTop = home.section.menuTop;
-    var menuReportsBCP = home.section.menuReportsBCP;
-    var inconsistence = home.section.inconsistence;
-    var bcpdelivered = client.page.reportPage();
-    var header = bcpdelivered.section.header;
-    var graphic = bcpdelivered.section.graphic;
+    var menuReports = home.section.menuReports;
+    var menuLeft = home.section.menuLeft;
+    var header = rework.section.header;
+    var graphic = rework.section.graphic;
     login.navigate()
       .realizarLogin(process.env.GOAL_USER, process.env.GOAL_PASS)
     client.pause(5000)
@@ -221,46 +240,28 @@ module.exports = {
     menuTop
       .waitForElementPresent('@apply', 1000)
       .click('@apply')
-    menuReportsBCP
-      .waitForElementVisible('@release', 10000)
-      .click('@release')
+    client.pause(1000)
+    menuLeft.click('@rework')
+    client.pause(1000)
+    menuReports
+      .click('@backlogItem')
+      .click('@datePicker')
+    client.pause(1000)
+    home
+      .clearDatePicker(home, '@startDate', '11/01/2017')
+      .clearDatePicker(home, '@endDate', '02/01/2018')
+    menuReports.click('@apply')
+    client.pause(2000)
+    header.assert.containsText('@reportTitle', 'Rework')
+    client.element('css selector', 'client.frame(1)', function (visible) {
+      if (visible.status == 0) {
+        client.frame(1).click('body > div > div > div > div.panel-content.panel-content-actions > div.appcues-actions-right > a')
+      }
+    })
+    graphic.assert.containsText('@axisX', 'GLPR-2917')
     client
-      .pause(2000)
       .assert.visualRegression()
-      .pause(2000)
+      .pause(1000)
       .end()
   },
-
-  'BCP Delivered Release Selected': function (client) {
-    var login = client.page.loginPage();
-    var home = client.page.homePage();
-    var menuTop = home.section.menuTop;
-    var menuReportsBCP = home.section.menuReportsBCP;
-    var inconsistence = home.section.inconsistence;
-    var bcpdelivered = client.page.reportPage();
-    var header = bcpdelivered.section.header;
-    var graphic = bcpdelivered.section.graphic;
-    login.navigate()
-      .realizarLogin(process.env.GOAL_USER, process.env.GOAL_PASS)
-    client.pause(5000)
-    home.waitForElementVisible('body', 1000)
-    menuTop.click('@companyBtn')
-    home
-      .waitForElementPresent('@list', 1000)
-      .selectListBox(client, home, 'Goal')
-    menuTop
-      .waitForElementPresent('@apply', 1000)
-      .click('@apply')
-    menuReportsBCP
-      .waitForElementVisible('@release', 10000)
-      .click('@release')
-    client.pause(1000)
-    home.selectListBox(client, home, '2018 - Q1')
-    menuReportsBCP.click('@release')
-    client
-      .pause(2000)
-      .assert.visualRegression()
-      .pause(2000)
-      .end()
-  }
 };

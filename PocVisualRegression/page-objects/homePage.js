@@ -116,7 +116,24 @@ module.exports = {
 					selector: 'div.input-group__input div:nth-child(2) div div.input-group--selection-controls__ripple'
 				},
 				datePicker: {
-					selector: 'div > div:nth-child(4) > div > div > div > div > div'
+					selector: 'div > div:nth-child(4) > div > div > div > div > div'					
+				},
+				apply: {
+					selector: '#applyButton'
+				}
+			}
+		},
+		menuReportsWorklog: {
+			selector: 'header.page-header',
+			elements: {
+				month: {
+					selector: 'div.input-group__input div:nth-child(1) div div.input-group--selection-controls__ripple'
+				},
+				cycle: {
+					selector: 'div.input-group__input div:nth-child(2) div div.input-group--selection-controls__ripple'
+				},
+				datePicker: {
+					selector: 'div > div:nth-child(3) > div > div > div > div > div'					
 				},
 				apply: {
 					selector: '#applyButton'
@@ -171,6 +188,9 @@ module.exports = {
 				},
 				rework: {
 					selector: 'nav > ul > li:nth-child(4) > span > span > span > a'
+				},
+				worklog:{
+					selector: 'nav > ul > div:nth-child(5) > li > span > span > span > a'
 				}
 			}
 		}
