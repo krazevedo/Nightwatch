@@ -19,7 +19,7 @@ const selectCommands = {
 			for (let i = 0;
 				(i < elements.value.length) && (success === false); i++) {
 				client.elementIdText(elements.value[i].ELEMENT, function (result) {
-					if (result.value === text) {						
+					if (result.value === text) {
 						success = true;
 						element = elements.value[i].ELEMENT;
 						page.api.elementIdClick(element);
@@ -48,8 +48,20 @@ const selectCommands = {
 	}
 };
 
+const checkCommands = {
+	checkOptions(client, page, check) {
+		client.getAttribute('#app > div.menu__content.menuable__content__active > div > div > div > div', 'aria-checked', function (result) {
+			if (result.value == 'true' && check == true) { //result.value true é unchecked
+				page.click('#app > div.menu__content.menuable__content__active > div > div > div > div > div.input-group__input > div');
+			} else(result.value == 'false' && check == false); { //result.value false é checked
+				page.click('#app > div.menu__content.menuable__content__active > div > div > div > div > div.input-group__input > div');
+			}
+		});
+	}
+};
+
 module.exports = {
-	commands: [datePickerCommands, selectCommands],
+	commands: [datePickerCommands, selectCommands, checkCommands],
 	elements: {
 		list: {
 			selector: '#app > div.menu__content.menuable__content__active > div > ul > li'
@@ -71,6 +83,12 @@ module.exports = {
 		},
 		logout: {
 			selector: '#app > div.menu__content.menuable__content__active > ul > li > a'
+		},
+		roadmap: {
+			selector: '#app > div:nth-child(10) > ul > a:nth-child(1) > li > div'
+		},
+		burnup: {
+			selector: '#app > div:nth-child(10) > ul > a:nth-child(2) > li > div'
 		}
 	},
 	sections: {
@@ -90,10 +108,10 @@ module.exports = {
 					selector: '#btnApplyMainSelection'
 				},
 				reports: {
-					selector: 'nav > ul > li:nth-child(2) > a'
+					selector: 'div:nth-child(4) > nav > ul > li:nth-child(2) > a'
 				},
-				roadmap: {
-					selector: 'nav > ul > li:nth-child(3) > a'
+				scope: {
+					selector: 'div:nth-child(4) > nav > ul > li:nth-child(1) > div > div > a'
 				},
 				user: {
 					selector: 'div.user-info-wrap > div > div:nth-child(2) > div > div > button > span'
@@ -116,7 +134,7 @@ module.exports = {
 					selector: 'div.input-group__input div:nth-child(2) div div.input-group--selection-controls__ripple'
 				},
 				datePicker: {
-					selector: 'div > div:nth-child(4) > div > div > div > div > div'					
+					selector: 'div > div:nth-child(4) > div > div > div > div > div'
 				},
 				apply: {
 					selector: '#applyButton'
@@ -133,7 +151,7 @@ module.exports = {
 					selector: 'div.input-group__input div:nth-child(2) div div.input-group--selection-controls__ripple'
 				},
 				datePicker: {
-					selector: 'div > div:nth-child(3) > div > div > div > div > div'					
+					selector: 'div > div:nth-child(3) > div > div > div > div > div'
 				},
 				apply: {
 					selector: '#applyButton'
@@ -189,7 +207,7 @@ module.exports = {
 				rework: {
 					selector: 'nav > ul > li:nth-child(4) > span > span > span > a'
 				},
-				worklog:{
+				worklog: {
 					selector: 'nav > ul > div:nth-child(5) > li > span > span > span > a'
 				}
 			}

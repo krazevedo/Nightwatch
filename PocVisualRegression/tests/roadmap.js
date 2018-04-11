@@ -21,7 +21,8 @@ module.exports = {
             .waitForElementPresent('@apply', 1000)
             .click('@apply')
         client.pause(1000)
-        menuTop.click('@roadmap')
+        menuTop.click('@scope')
+        home.click('@roadmap')
         client.pause(2000)
         menuRoadmap
             .click('@datePicker')
@@ -30,7 +31,7 @@ module.exports = {
             .clearDatePicker(roadmap, '@endDate', '02/01/2018')
         menuRoadmap.click('@apply')
         client
-            .pause(3000)
+            .waitForElementPresent('#roadmap > div > section > div:nth-child(2) > div.team__data > section > div:nth-child(1) > div.team__cycle__header > div > div', 10000)
             .assert.visualRegression()
             .end()
     },
@@ -55,7 +56,8 @@ module.exports = {
             .waitForElementPresent('@apply', 1000)
             .click('@apply')
         client.pause(1000)
-        menuTop.click('@roadmap')
+        menuTop.click('@scope')
+        home.click('@roadmap')
         client.pause(2000)
         menuRoadmap
             .click('@epic')
@@ -95,7 +97,8 @@ module.exports = {
             .waitForElementPresent('@apply', 1000)
             .click('@apply')
         client.pause(1000)
-        menuTop.click('@roadmap')
+        menuTop.click('@scope')
+        home.click('@roadmap')
         client.pause(2000)
         menuRoadmap.click('@datePicker')
         roadmap.clearDatePicker(roadmap, '@endDate', '07/01/2018')
@@ -171,7 +174,8 @@ module.exports = {
             .waitForElementPresent('@apply', 1000)
             .click('@apply')
         client.pause(1000)
-        menuTop.click('@roadmap')
+        menuTop.click('@scope')
+        home.click('@roadmap')
         client.pause(2000)
         menuRoadmap
             .click('@datePicker')

@@ -40,7 +40,7 @@
         "desiredCapabilities": {
           "browserName": "chrome",
           "chromeOptions" : {
-            "args" : ["start-maximized", "window-size=1170,768"]
+            "args" : ["start-maximized", "window-size=1170,768", "headless"]
           }          
         }
       },

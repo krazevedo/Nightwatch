@@ -6,7 +6,6 @@ module.exports = {
         login.navigate()
           .waitForElementVisible('body', 1000)
           .assert.elementPresent('h2','Welcome')
-          .realizarLogin(process.env.GOAL_USER, process.env.GOAL_PASS) //Comando para realizar o login 
           .assert.visualRegression() 
         client.end()       
     },

@@ -1,6 +1,6 @@
 require('dotenv').load()
 module.exports = {
-  '@tags': ['bcpdelivered'],
+  '@tags': ['bcpdelivered'],/*
   'BCP Delivered Month': function (client) {
     //Instaciar paginas
     var login = client.page.loginPage();
@@ -32,6 +32,7 @@ module.exports = {
           client.frame(1).click('body > div > div > div > div.panel-content.panel-content-actions > div.appcues-actions-right > a')
         }
       })
+      .pause(3000)
       .assert.visualRegression()
       .end()
   },
@@ -73,8 +74,8 @@ module.exports = {
     })
     graphic.assert.containsText('@axisX', 'GOAL Fighters')
     client
-      .assert.visualRegression()
       .pause(2000)
+      .assert.visualRegression()      
       .end()
   },
 
@@ -119,10 +120,10 @@ module.exports = {
       .waitForElementPresent('@viewBtn', 5000)
       .click('@viewBtn')
     client
-      .assert.visualRegression()
       .pause(2000)
+      .assert.visualRegression()      
       .end()
-  },
+  },*/
 
   'BCP Delivered Options Checked': function (client) {
     var login = client.page.loginPage();
@@ -155,10 +156,10 @@ module.exports = {
     menuReportsBCP
       .waitForElementVisible('@release', 10000)
       .click('@optionsBtn')
+    home.checkOptions(client, home, true)
     client
       .pause(2000)
-      .assert.visualRegression()
-      .pause(2000)
+      .assert.visualRegression()      
       .end()
   },
 
@@ -193,13 +194,12 @@ module.exports = {
     menuReportsBCP
       .waitForElementVisible('@release', 10000)
       .click('@optionsBtn')
-    home.click('@checkOptions')
+    home.checkOptions(client, home, false)
     client
       .pause(2000)
-      .assert.visualRegression()
-      .pause(2000)
+      .assert.visualRegression()      
       .end()
-  },
+  },/*
 
   'BCP Delivered Release': function (client) {
     var login = client.page.loginPage();
@@ -227,7 +227,6 @@ module.exports = {
     client
       .pause(2000)
       .assert.visualRegression()
-      .pause(2000)
       .end()
   },
 
@@ -260,7 +259,6 @@ module.exports = {
     client
       .pause(2000)
       .assert.visualRegression()
-      .pause(2000)
       .end()
-  }
+  }*/
 };
