@@ -36,11 +36,8 @@ module.exports = {
     client.pause(1000)
     menuLeft.click('@worklog')
     //verifica se o frame existe, se sim clica no Gotcha
-    client.element('css selector', 'client.frame(1)', function (visible) {
-        if (visible.status == 0) {
-          client.frame(1).click('body > div > div > div > div.panel-content.panel-content-actions > div.appcues-actions-right > a')
-        }
-      })
+    home.closeAppcues(client)
+    client
       .assert.visualRegression()
       .end()
   },
@@ -80,11 +77,6 @@ module.exports = {
     menuReports.click('@apply')
     client.pause(2000)
     header.assert.containsText('@reportTitle', 'Performance Worklog')
-    client.element('css selector', 'client.frame(1)', function (visible) {
-      if (visible.status == 0) {
-        client.frame(1).click('body > div > div > div > div.panel-content.panel-content-actions > div.appcues-actions-right > a')
-      }
-    })
     graphic.assert.containsText('@axisX', 'GOAL Fighters')
     client
       .assert.visualRegression()
@@ -128,11 +120,6 @@ module.exports = {
     client.pause(2000)
     tabs.click('@tab2')
     header.assert.containsText('@reportTitle', 'Worklog by Task Type')
-    client.element('css selector', 'client.frame(1)', function (visible) {
-      if (visible.status == 0) {
-        client.frame(1).click('body > div > div > div > div.panel-content.panel-content-actions > div.appcues-actions-right > a')
-      }
-    })
     client
       .assert.visualRegression()
       .pause(1000)
@@ -175,11 +162,6 @@ module.exports = {
     client.pause(2000)
     tabs.click('@tab2')
     header.assert.containsText('@reportTitle', 'Worklog by Task Type')
-    client.element('css selector', 'client.frame(1)', function (visible) {
-      if (visible.status == 0) {
-        client.frame(1).click('body > div > div > div > div.panel-content.panel-content-actions > div.appcues-actions-right > a')
-      }
-    })
     client.pause(1000)
     graphic.assert.containsText('@axisX', 'GOAL Fighters')
     client

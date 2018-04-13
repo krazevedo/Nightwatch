@@ -60,8 +60,18 @@ const checkCommands = {
 	}
 };
 
+const frameCommands = {
+	closeAppcues(client) {
+		client.element('css selector', 'body > div.appcues > appcues-layer > div > div > iframe', function (visible) {
+			if (visible.status == 0) {
+				client.frame(1).click('body > div > div > div > div.panel-content.panel-content-actions > div.appcues-actions-right > a')
+			}
+		})
+	}
+}
+
 module.exports = {
-	commands: [datePickerCommands, selectCommands, checkCommands],
+	commands: [datePickerCommands, selectCommands, checkCommands, frameCommands],
 	elements: {
 		list: {
 			selector: '#app > div.menu__content.menuable__content__active > div > ul > li'

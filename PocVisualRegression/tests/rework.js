@@ -32,11 +32,8 @@ module.exports = {
       .clearDatePicker(home, '@endDate', '02/01/2018')
     menuReports.click('@apply')
     //verifica se o frame existe, se sim clica no Gotcha
-    client.element('css selector', 'client.frame(1)', function (visible) {
-        if (visible.status == 0) {
-          client.frame(1).click('body > div > div > div > div.panel-content.panel-content-actions > div.appcues-actions-right > a')
-        }
-      })
+    home.closeAppcues(client)
+    client
       .assert.visualRegression()
       .end()
   },
@@ -76,11 +73,6 @@ module.exports = {
     menuReports.click('@apply')
     client.pause(2000)
     header.assert.containsText('@reportTitle', 'Rework')
-    client.element('css selector', 'client.frame(1)', function (visible) {
-      if (visible.status == 0) {
-        client.frame(1).click('body > div > div > div > div.panel-content.panel-content-actions > div.appcues-actions-right > a')
-      }
-    })
     graphic.assert.containsText('@axisX', 'GOAL Fighters')
     client
       .assert.visualRegression()
@@ -124,11 +116,6 @@ module.exports = {
       .click('@apply')
     client.pause(2000)
     header.assert.containsText('@reportTitle', 'Rework')
-    client.element('css selector', 'client.frame(1)', function (visible) {
-      if (visible.status == 0) {
-        client.frame(1).click('body > div > div > div > div.panel-content.panel-content-actions > div.appcues-actions-right > a')
-      }
-    })
     inconsistence
       .waitForElementPresent('@viewBtn', 5000)
       .click('@viewBtn')
@@ -253,11 +240,6 @@ module.exports = {
     menuReports.click('@apply')
     client.pause(2000)
     header.assert.containsText('@reportTitle', 'Rework')
-    client.element('css selector', 'client.frame(1)', function (visible) {
-      if (visible.status == 0) {
-        client.frame(1).click('body > div > div > div > div.panel-content.panel-content-actions > div.appcues-actions-right > a')
-      }
-    })
     graphic.assert.containsText('@axisX', 'GLPR-2917')
     client
       .assert.visualRegression()

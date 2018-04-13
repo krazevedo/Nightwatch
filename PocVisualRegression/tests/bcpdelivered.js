@@ -1,6 +1,6 @@
 require('dotenv').load()
 module.exports = {
-  '@tags': ['bcpdelivered'],/*
+  '@tags': ['bcpdelivered'],
   'BCP Delivered Month': function (client) {
     //Instaciar paginas
     var login = client.page.loginPage();
@@ -27,11 +27,8 @@ module.exports = {
       .clearDatePicker(home, '@endDate', '02/01/2018')
     menuReportsBCP.click('@apply')
     //verifica se o frame existe, se sim clica no Gotcha
-    client.element('css selector', 'client.frame(1)', function (visible) {
-        if (visible.status == 0) {
-          client.frame(1).click('body > div > div > div > div.panel-content.panel-content-actions > div.appcues-actions-right > a')
-        }
-      })
+    home.closeAppcues(client)
+    client
       .pause(3000)
       .assert.visualRegression()
       .end()
@@ -123,7 +120,7 @@ module.exports = {
       .pause(2000)
       .assert.visualRegression()      
       .end()
-  },*/
+  },
 
   'BCP Delivered Options Checked': function (client) {
     var login = client.page.loginPage();
@@ -199,7 +196,7 @@ module.exports = {
       .pause(2000)
       .assert.visualRegression()      
       .end()
-  },/*
+  },
 
   'BCP Delivered Release': function (client) {
     var login = client.page.loginPage();
@@ -260,5 +257,5 @@ module.exports = {
       .pause(2000)
       .assert.visualRegression()
       .end()
-  }*/
+  }
 };

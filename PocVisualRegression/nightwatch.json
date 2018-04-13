@@ -15,7 +15,12 @@
         "webdriver.chrome.driver" : "lib/drivers/chromedriver.exe",
         "webdriver.gecko.driver" : "lib/drivers/geckdriver.exe",
         "webdriver.edge.driver" : ""
-      }
+      }, 
+
+      "test_workers": {
+        "enabled": true,
+        "workers": "auto"
+      }  
     },
   
     "test_settings" : {
@@ -28,7 +33,7 @@
           "enabled" : true,
           "path" : "reports",
           "on_failure": true,
-          "on_error": true
+          "on_error": false
         },
         "desiredCapabilities": {
           "browserName": "firefox",
