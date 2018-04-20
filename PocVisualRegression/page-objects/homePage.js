@@ -97,6 +97,9 @@ module.exports = {
 		roadmap: {
 			selector: '#app > div:nth-child(10) > ul > a:nth-child(1) > li > div'
 		},
+		roadmapSemRelease: {
+			selector: '#app > div:nth-child(9) > ul > a:nth-child(1) > li > div'
+		},
 		burnup: {
 			selector: '#app > div:nth-child(10) > ul > a:nth-child(2) > li > div'
 		}
@@ -161,7 +164,7 @@ module.exports = {
 					selector: 'div.input-group__input div:nth-child(2) div div.input-group--selection-controls__ripple'
 				},
 				datePicker: {
-					selector: 'div > div:nth-child(3) > div > div > div > div > div'
+					selector: 'div > div:nth-child(4) > div > div > div > div > div'
 				},
 				apply: {
 					selector: '#applyButton'

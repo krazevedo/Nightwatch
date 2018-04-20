@@ -188,5 +188,46 @@ module.exports = {
         client
             .assert.visualRegression()
             .end()
+    },
+
+    'Roadmap x Report': function (client) {
+        //Instaciar paginas
+        var login = client.page.loginPage();
+        var home = client.page.homePage();
+        var roadmap = client.page.roadmapPage();
+        //Instanciar sessão das páginas
+        var menuTop = home.section.menuTop;
+        var menuRoadmap = roadmap.section.menuRoadmap;
+        login.navigate()
+            .realizarLogin(process.env.GOAL_USER, process.env.GOAL_PASS) //Comando para realizar o login        
+        client.pause(5000)
+        home.waitForElementVisible('body', 1000)
+        menuTop.click('@companyBtn')
+        home
+            .waitForElementPresent('@list', 1000)
+            .selectListBox(client, home, 'Goal')
+        menuTop
+            .waitForElementPresent('@apply', 1000)
+            .click('@apply')
+        client.pause(1000)
+        menuTop.click('@scope')
+        home.click('@roadmap')
+        client.pause(2000)
+        menuRoadmap
+            .click('@datePicker')
+        roadmap
+            .clearDatePicker(roadmap, '@startDate', '11/01/2017')
+            .clearDatePicker(roadmap, '@endDate', '02/01/2018')
+        menuRoadmap.click('@apply')
+        client.waitForElementPresent('#roadmap > div > section > div:nth-child(2) > div.team__data > section > div:nth-child(1) > div.team__cycle__header > div > div', 10000)
+        menuTop.click('@reports')
+        client.pause(2000)
+        menuTop.click('@scope')
+        client.pause('1000')
+        home.click('@roadmap')
+        client
+        .waitForElementPresent('#roadmap > div > section > div:nth-child(2) > div.team__data > section > div:nth-child(1) > div.team__cycle__header > div > div', 10000)
+            .assert.visualRegression()
+            .end()
     }
 };
